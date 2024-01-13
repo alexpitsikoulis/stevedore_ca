@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package certificate_authority;
+
+service certificate_authority {
+    rpc SignCertificate(SignCertificateRequest) returns (SignCertificateResponse);
+    rpc VerifyCertificate(VerifyCertificateRequest) returns (VerifyCertificateResponse);
+}
+
+message SignCertificateRequest {
+    string id = 1;
+}
+
+message SignCertificateResponse {
+    bytes certificate = 1;
+}
+
+message VerifyCertificateRequest {
+    bytes certificate = 1;
+}
+
+message VerifyCertificateResponse {
+    string id = 1;
+}
