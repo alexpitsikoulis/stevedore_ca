@@ -3,12 +3,21 @@ syntax = "proto3";
 package certificate_authority;
 
 service certificate_authority {
+    rpc GetRootCertificate(GetRootCertificateRequest) returns (GetRootCertificateResponse);
     rpc SignCertificate(SignCertificateRequest) returns (SignCertificateResponse);
     rpc VerifyCertificate(VerifyCertificateRequest) returns (VerifyCertificateResponse);
 }
 
+message GetRootCertificateRequest {
+    optional bytes certificate = 1;
+}
+
+message GetRootCertificateResponse {
+    optional bytes certificate = 1;
+}
+
 message SignCertificateRequest {
-    string id = 1;
+    bytes csr = 1;
 }
 
 message SignCertificateResponse {
